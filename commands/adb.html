@@ -25,13 +25,29 @@
 
 <div class="page_title">adb</div>
 
-  
+  <h2 id="adb-shell-screencap">adb shell screencap</h2>
+<p>说明：截屏操作</p>
+<p>用法：</p>
+<div class="hlcode"><pre><span class="n">adb</span> <span class="n">shell</span> <span class="n">screencap</span> <span class="err">–</span><span class="n">p</span> <span class="err">截图文件路径</span>
+</pre></div>
+
+
+<p>案例：</p>
+<div class="hlcode"><pre><span class="n">adb</span> <span class="n">shell</span> <span class="n">screencap</span> <span class="err">–</span><span class="n">p</span> <span class="o">/</span><span class="n">sdcard</span><span class="o">/</span><span class="n">tmp</span><span class="p">.</span><span class="n">png</span>
+</pre></div>
+
+
+<p>这个命令对于测试人员非常有用，有时候想快速截取手机屏幕，速度打开，我们就可以利用这个命令写一个简单的脚本文件，内容如下：</p>
+<div class="hlcode"><pre><span class="n">adb</span> <span class="n">shell</span> <span class="n">screencap</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">sdcard</span><span class="o">/</span><span class="n">tmp</span><span class="o">.</span><span class="na">png</span>
+<span class="n">adb</span> <span class="n">pull</span> <span class="o">/</span><span class="n">sdcard</span><span class="o">/</span><span class="n">tmp</span><span class="o">.</span><span class="na">png</span> <span class="o">~/</span><span class="n">Desktop</span>
+<span class="n">open</span> <span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">tmp</span><span class="o">.</span><span class="na">png</span>
+</pre></div>
     </div>
     <div id="footer">
       <span>
         <p>Copyright © 2017 .
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2017-09-06 13:44:40</p>
+        <p>Site Generated 2017-09-06 19:08:54</p>
       </span>
     </div>
 
