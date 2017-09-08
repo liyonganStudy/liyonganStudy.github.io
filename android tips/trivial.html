@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>trivial - </title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <div id="container">
+      
+<div id="header">
+  <div class="post-nav"><a href="/">Home</a>&nbsp;&#187;&nbsp;<a href="/#android tips">android tips</a>&nbsp;&#187;&nbsp;trivial
+    <span class="updated">Page Updated&nbsp;
+      2017-09-08 10:05
+    </span></div>
+</div>
+<div class="clearfix"></div>
+
+<div class="page_title">trivial</div>
+
+  <h2 id="logstacktrace">如何log记录StackTrace</h2>
+<div class="hlcode"><pre>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">logStackTrace</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">(</span><span class="s">&quot;===============&quot;</span> <span class="o">+</span> <span class="n">title</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="o">);</span>
+        <span class="n">StackTraceElement</span> <span class="n">elements</span><span class="o">[]</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getStackTrace</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">StackTraceElement</span> <span class="n">item</span> <span class="o">:</span> <span class="n">elements</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">isNativeMethod</span><span class="o">())</span> <span class="o">{</span>
+                <span class="k">continue</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">String</span> <span class="n">cn</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">getClassName</span><span class="o">();</span>
+            <span class="n">String</span> <span class="n">mn</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">getMethodName</span><span class="o">();</span>
+            <span class="n">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">getFileName</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">line</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">getLineNumber</span><span class="o">();</span>
+            <span class="n">log</span><span class="o">(</span><span class="n">cn</span> <span class="o">+</span> <span class="s">&quot;.&quot;</span> <span class="o">+</span> <span class="n">mn</span> <span class="o">+</span> <span class="s">&quot;(&quot;</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span> <span class="o">+</span> <span class="n">line</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</pre></div>
+    </div>
+    <div id="footer">
+      <span>
+        <p>Copyright © 2017 .
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
+        <p>Site Generated 2017-09-08 10:07:33</p>
+      </span>
+    </div>
+
+    
+    
+  </body>
+</html>

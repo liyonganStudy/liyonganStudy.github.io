@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>trivial - </title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <div id="container">
+      
+<div id="header">
+  <div class="post-nav"><a href="/">Home</a>&nbsp;&#187;&nbsp;<a href="/#android">android</a>&nbsp;&#187;&nbsp;trivial
+    <span class="updated">Page Updated&nbsp;
+      2017-09-07 15:33
+    </span></div>
+</div>
+<div class="clearfix"></div>
+
+<div class="page_title">trivial</div>
+
+  <h3 id="componentname">ComponentName</h3>
+<h4 id="_1">说明：</h4>
+<ul>
+<li>Intent的Component属性要接受一个ComponentName对象</li>
+<li>实例化一个ComponentName需要两个参数，第一个参数是要启动应用的包名称，第二个参数是你要启动的Activity或者Service的全称（包名+类名）</li>
+<li>如果你要的启动的其他应用的Activity不是该应用的入口Activity，那么在清单文件中，该Activity节点一定要加上android:exported="true"，表示允许其他应用打开，对于所有的Service也是一样</li>
+</ul>
+<div class="hlcode"><pre><span class="n">ComponentName</span> <span class="n">comp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ComponentName</span><span class="o">(</span><span class="s">&quot;com.lovo.activity&quot;</span><span class="o">,</span>  
+                        <span class="s">&quot;com.lovo.activity.SecondActivity&quot;</span><span class="o">);</span>  
+<span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">();</span>  
+<span class="c1">// 为Intent设置Component属性  </span>
+<span class="n">intent</span><span class="o">.</span><span class="na">setComponent</span><span class="o">(</span><span class="n">comp</span><span class="o">);</span>  
+<span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>  
+</pre></div>
+    </div>
+    <div id="footer">
+      <span>
+        <p>Copyright © 2017 .
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
+        <p>Site Generated 2017-09-08 10:07:33</p>
+      </span>
+    </div>
+
+    
+    
+  </body>
+</html>
