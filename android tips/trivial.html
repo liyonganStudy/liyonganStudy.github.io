@@ -41,12 +41,53 @@
         <span class="o">}</span>
     <span class="o">}</span>
 </pre></div>
+
+
+<h2 id="androidprocess">android:process</h2>
+<ul>
+<li>这个属性可以让组件运行在不同的进程中，如果process name以：开头，表示这个新进程是程序的私有进程。</li>
+<li>设置了 android:process 属性将组件运行到另一个进程，相当于另一个应用程序，所以在另一个线程中也将新建一个 Application 的实例。因此，每新建一个进程 Application 的 onCreate 都将被调用一次。 </li>
+</ul>
+<p>获取当前进程名称：</p>
+<h3 id="1">方法1</h3>
+<div class="hlcode"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getProcessName</span><span class="o">(</span><span class="n">Context</span> <span class="n">cxt</span><span class="o">)</span> <span class="o">{</span>  
+    <span class="c1">// 需要try catch</span>
+    <span class="kt">int</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Process</span><span class="o">.</span><span class="na">myPid</span><span class="o">();</span>
+    <span class="n">ActivityManager</span> <span class="n">am</span> <span class="o">=</span> <span class="o">(</span><span class="n">ActivityManager</span><span class="o">)</span> <span class="n">cxt</span><span class="o">.</span><span class="na">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">ACTIVITY_SERVICE</span><span class="o">);</span>  
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">RunningAppProcessInfo</span><span class="o">&gt;</span> <span class="n">runningApps</span> <span class="o">=</span> <span class="n">am</span><span class="o">.</span><span class="na">getRunningAppProcesses</span><span class="o">();</span>  
+    <span class="k">if</span> <span class="o">(</span><span class="n">runningApps</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="k">for</span> <span class="o">(</span><span class="n">RunningAppProcessInfo</span> <span class="n">procInfo</span> <span class="o">:</span> <span class="n">runningApps</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">procInfo</span><span class="o">.</span><span class="na">pid</span> <span class="o">==</span> <span class="n">pid</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="k">return</span> <span class="n">procInfo</span><span class="o">.</span><span class="na">processName</span><span class="o">;</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>  
+<span class="o">}</span>  
+</pre></div>
+
+
+<h3 id="2">方法2</h3>
+<div class="hlcode"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getProcessName</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">try</span> <span class="o">{</span>
+    <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;/proc/&quot;</span> <span class="o">+</span> <span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Process</span><span class="o">.</span><span class="na">myPid</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="s">&quot;cmdline&quot;</span><span class="o">);</span>
+    <span class="n">BufferedReader</span> <span class="n">mBufferedReader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="n">file</span><span class="o">));</span>
+    <span class="n">String</span> <span class="n">processName</span> <span class="o">=</span> <span class="n">mBufferedReader</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+    <span class="n">mBufferedReader</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="k">return</span> <span class="n">processName</span><span class="o">;</span>
+  <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
     </div>
     <div id="footer">
       <span>
         <p>Copyright © 2017 .
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2017-09-08 17:56:44</p>
+        <p>Site Generated 2017-09-11 20:28:01</p>
       </span>
     </div>
 
