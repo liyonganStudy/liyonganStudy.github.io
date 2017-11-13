@@ -53,14 +53,58 @@
 </pre></div>
 
 
-<h3 id="_5">参考链接</h3>
+<h3 id="_5">时序图实例</h3>
+<div class="hlcode"><pre><span class="n">mermaid</span>
+<span class="n">sequenceDiagram</span>
+<span class="n">Application</span><span class="o">-&gt;&gt;</span><span class="n">Replugin</span><span class="o">:</span> <span class="n">attachBaseContext</span><span class="p">()</span>
+<span class="n">Replugin</span><span class="o">-&gt;&gt;</span><span class="n">IPC</span><span class="o">:</span> <span class="n">IPC</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="n">Replugin</span><span class="o">-&gt;&gt;</span><span class="n">PMF</span><span class="o">:</span> <span class="n">PMF</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="n">Replugin</span><span class="o">-&gt;&gt;</span><span class="n">PMF</span><span class="o">:</span> <span class="n">PMF</span><span class="p">.</span><span class="n">callAttach</span><span class="p">(</span><span class="n">app</span><span class="p">)</span> 
+</pre></div>
+
+
+<div class="hlcode"><pre><span class="n">sequenceDiagram</span>
+<span class="n">Application</span><span class="o">-&gt;&gt;</span><span class="n">Replugin</span><span class="o">:</span> <span class="n">attachBaseContext</span><span class="p">()</span>
+<span class="n">Replugin</span><span class="o">-&gt;&gt;</span><span class="n">IPC</span><span class="o">:</span> <span class="n">IPC</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="n">Replugin</span><span class="o">-&gt;&gt;</span><span class="n">PMF</span><span class="o">:</span> <span class="n">PMF</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="n">Replugin</span><span class="o">-&gt;&gt;</span><span class="n">PMF</span><span class="o">:</span> <span class="n">PMF</span><span class="p">.</span><span class="n">callAttach</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="_6">流程图实例</h3>
+<div class="hlcode"><pre><span class="n">mermaid</span>
+<span class="n">graph</span> <span class="n">LR</span>
+<span class="n">p</span><span class="p">(</span><span class="n">new</span> <span class="n">PmBase</span><span class="p">)</span><span class="o">--&gt;</span><span class="n">pl</span><span class="p">(</span><span class="n">new</span> <span class="n">PluginProcessPer</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="n">ext</span><span class="p">(</span><span class="n">extends</span> <span class="n">IPluginClient</span><span class="p">.</span><span class="n">Stub</span><span class="p">)</span>
+<span class="n">p</span><span class="o">--&gt;</span><span class="n">pm</span><span class="p">(</span><span class="n">new</span> <span class="n">PmLocalImpl</span><span class="p">)</span>
+<span class="n">pm</span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="n">imp</span><span class="p">(</span><span class="n">implements</span> <span class="n">IPluginManager</span><span class="p">)</span>
+<span class="n">p</span><span class="o">--&gt;</span><span class="n">pmi</span><span class="p">(</span><span class="n">new</span> <span class="n">PmInternalImpl</span><span class="p">)</span>
+<span class="n">pmi</span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="n">impi</span><span class="p">(</span><span class="n">implements</span> <span class="n">IPluginActivityManager</span><span class="p">)</span>
+</pre></div>
+
+
+<h3 id="markdown">markdown支持的流程图</h3>
+<div class="hlcode"><pre><span class="n">flow</span>
+<span class="n">st</span><span class="o">=&gt;</span><span class="n">start</span><span class="o">:</span> <span class="n">PmBase</span><span class="p">.</span><span class="n">init</span>
+<span class="n">e</span><span class="o">=&gt;</span><span class="n">end</span><span class="o">:</span> <span class="n">end</span>
+<span class="n">cond</span><span class="o">=&gt;</span><span class="n">condition</span><span class="o">:</span> <span class="n">persistent</span><span class="err">进程</span><span class="o">?</span>
+<span class="n">op1</span><span class="o">=&gt;</span><span class="n">operation</span><span class="o">:</span> <span class="n">initForClient</span>
+<span class="n">op2</span><span class="o">=&gt;</span><span class="n">operation</span><span class="o">:</span> <span class="n">initForPersistent</span>
+<span class="n">op3</span><span class="o">=&gt;</span><span class="n">operation</span><span class="o">:</span> <span class="n">PluginTable</span><span class="p">.</span><span class="n">initPlugins</span>
+<span class="n">st</span><span class="o">-&gt;</span><span class="n">cond</span>
+<span class="n">cond</span><span class="p">(</span><span class="n">yes</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">op2</span><span class="o">-&gt;</span><span class="n">op3</span>
+<span class="n">cond</span><span class="p">(</span><span class="n">no</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">op1</span><span class="o">-&gt;</span><span class="n">op3</span>
+</pre></div>
+
+
+<h3 id="_7">参考链接</h3>
 <p><a href="https://mermaidjs.github.io/sequenceDiagram.html">官方文档</a></p>
     </div>
     <div id="footer">
       <span>
         <p>Copyright © 2017 .
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2017-11-10 14:29:58</p>
+        <p>Site Generated 2017-11-13 15:31:13</p>
       </span>
     </div>
 
