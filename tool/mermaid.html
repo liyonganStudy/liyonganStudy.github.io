@@ -54,16 +54,20 @@
 
 
 <h3 id="_5">时序图实例</h3>
-<div class="hlcode"><pre><span class="n">sequenceDiagram</span>
+<div class="hlcode"><pre><span class="n">mermaid</span>
+<span class="n">sequenceDiagram</span>
 <span class="n">Application</span><span class="o">-&gt;&gt;</span><span class="n">Replugin</span><span class="o">:</span> <span class="n">attachBaseContext</span><span class="p">()</span>
+<span class="n">activate</span> <span class="n">Application</span>
 <span class="n">Replugin</span><span class="o">-&gt;&gt;</span><span class="n">IPC</span><span class="o">:</span> <span class="n">IPC</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 <span class="n">Replugin</span><span class="o">-&gt;&gt;</span><span class="n">PMF</span><span class="o">:</span> <span class="n">PMF</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
-<span class="n">Replugin</span><span class="o">-&gt;&gt;</span><span class="n">PMF</span><span class="o">:</span> <span class="n">PMF</span><span class="p">.</span><span class="n">callAttach</span><span class="p">(</span><span class="n">app</span><span class="p">)</span> 
+<span class="n">Replugin</span><span class="o">-&gt;&gt;</span><span class="n">PMF</span><span class="o">:</span> <span class="n">PMF</span><span class="p">.</span><span class="n">callAttach</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="n">deactivate</span> <span class="n">Application</span> 
 </pre></div>
 
 
 <h3 id="_6">流程图实例</h3>
-<div class="hlcode"><pre><span class="n">graph</span> <span class="n">LR</span>
+<div class="hlcode"><pre><span class="n">mermaid</span>
+<span class="n">graph</span> <span class="n">LR</span>
 <span class="n">p</span><span class="p">(</span><span class="n">new</span> <span class="n">PmBase</span><span class="p">)</span><span class="o">--&gt;</span><span class="n">pl</span><span class="p">(</span><span class="n">new</span> <span class="n">PluginProcessPer</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="n">ext</span><span class="p">(</span><span class="n">extends</span> <span class="n">IPluginClient</span><span class="p">.</span><span class="n">Stub</span><span class="p">)</span>
 <span class="n">p</span><span class="o">--&gt;</span><span class="n">pm</span><span class="p">(</span><span class="n">new</span> <span class="n">PmLocalImpl</span><span class="p">)</span>
@@ -74,7 +78,8 @@
 
 
 <h3 id="markdown">markdown支持的流程图</h3>
-<div class="hlcode"><pre><span class="n">st</span><span class="o">=&gt;</span><span class="n">start</span><span class="o">:</span> <span class="n">PmBase</span><span class="p">.</span><span class="n">init</span>
+<div class="hlcode"><pre><span class="n">flow</span>
+<span class="n">st</span><span class="o">=&gt;</span><span class="n">start</span><span class="o">:</span> <span class="n">PmBase</span><span class="p">.</span><span class="n">init</span>
 <span class="n">e</span><span class="o">=&gt;</span><span class="n">end</span><span class="o">:</span> <span class="n">end</span>
 <span class="n">cond</span><span class="o">=&gt;</span><span class="n">condition</span><span class="o">:</span> <span class="n">persistent</span><span class="err">进程</span><span class="o">?</span>
 <span class="n">op1</span><span class="o">=&gt;</span><span class="n">operation</span><span class="o">:</span> <span class="n">initForClient</span>
@@ -87,7 +92,8 @@
 
 
 <h3 id="uml">绘制uml图</h3>
-<div class="hlcode"><pre><span class="n">class</span> <span class="n">A</span>  <span class="p">{</span>
+<div class="hlcode"><pre><span class="n">plantuml</span>
+<span class="n">class</span> <span class="n">A</span>  <span class="p">{</span>
 <span class="p">{</span><span class="k">static</span><span class="p">}</span><span class="n">String</span> <span class="n">data</span>
 <span class="kt">int</span> <span class="n">time</span>
 <span class="n">method1</span><span class="p">()</span>
@@ -110,7 +116,7 @@
       <span>
         <p>Copyright © 2017 .
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2017-11-14 15:44:46</p>
+        <p>Site Generated 2017-11-14 15:48:50</p>
       </span>
     </div>
 
