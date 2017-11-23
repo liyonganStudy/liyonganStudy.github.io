@@ -75,6 +75,31 @@
 </pre></div>
 
 
+<h2 id="fork">保持fork之后的项目和上游同步</h2>
+<h3 id="git-remote-v">使用 git remote -v 查看当前的远程仓库地址，输出如下：</h3>
+<div class="hlcode"><pre><span class="n">origin</span>  <span class="n">git</span><span class="nd">@github.com</span><span class="o">:</span><span class="n">ibrother</span><span class="o">/</span><span class="n">staticblog</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">git</span> <span class="o">(</span><span class="n">fetch</span><span class="o">)</span>
+<span class="n">origin</span>  <span class="n">git</span><span class="nd">@github.com</span><span class="o">:</span><span class="n">ibrother</span><span class="o">/</span><span class="n">staticblog</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">git</span> <span class="o">(</span><span class="n">push</span><span class="o">)</span>
+</pre></div>
+
+
+<p>接下来运行 git remote add upstream https://github.com/staticblog/staticblog.github.io.git</p>
+<p>这条命令就算添加一个别名为 upstream（上游）的地址，指向之前 fork 的原仓库地址。git remote -v 输出如下：</p>
+<div class="hlcode"><pre><span class="n">origin</span>  <span class="n">git</span><span class="nd">@github.com</span><span class="o">:</span><span class="n">ibrother</span><span class="o">/</span><span class="n">staticblog</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">git</span> <span class="o">(</span><span class="n">fetch</span><span class="o">)</span>
+<span class="n">origin</span>  <span class="n">git</span><span class="nd">@github.com</span><span class="o">:</span><span class="n">ibrother</span><span class="o">/</span><span class="n">staticblog</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">git</span> <span class="o">(</span><span class="n">push</span><span class="o">)</span>
+<span class="n">upstream</span>        <span class="nl">https:</span><span class="c1">//github.com/staticblog/staticblog.github.io.git (fetch)</span>
+<span class="n">upstream</span>        <span class="nl">https:</span><span class="c1">//github.com/staticblog/staticblog.github.io.git (push)</span>
+</pre></div>
+
+
+<p>之后运行下面几条命令，就可以保持本地仓库和上游仓库同步了</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">upstream</span><span class="o">/</span><span class="n">master</span>
+
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</pre></div>
+
+
 <h2 id="gitbub">实例操作gitbub网址</h2>
 <h3 id="_7">创建远程库</h3>
 <ol>
@@ -135,7 +160,7 @@ cd进入GitOperate，输入 <em>git clone https://github.com/FreeSunny/GitOperat
       <span>
         <p>Copyright © 2017 .
         Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
-        <p>Site Generated 2017-11-14 15:48:50</p>
+        <p>Site Generated 2017-11-23 15:11:47</p>
       </span>
     </div>
 
